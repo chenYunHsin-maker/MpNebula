@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package events;
+
+message TrafficLog {
+  uint32 duration = 1;
+  uint64 sent = 2;
+  uint64 received = 3;
+  string dir = 4;
+  uint32 proto = 5;
+  string proto_name = 6;
+}
+
+message IDPLog {
+  string cls = 1;
+  string act = 2;
+  uint32 sid = 3;
+  string ob = 4;
+  bytes ob_mac = 5;
+}
+
+message FirewallLog {
+  string cls = 1;
+  string ob = 2;
+  bytes ob_mac = 3;
+  string dir = 4;
+  uint32 proto = 5;
+  string proto_name = 6;
+}
+
+message GEOIPLog {
+  string country_code = 1;
+  string city_code = 2;
+  string country_name = 3;
+  string city_name = 4;
+}
+
+message Devicelog {
+  // Represents seconds of UTC time since Unix epoch
+  // 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+  // 9999-12-31T23:59:59Z inclusive.
+  int64 timestamp = 1;
+
+  int32 severity = 2;
+  int32 facility = 3;
+
+  string category = 4;
+
+  // IP address is serialized in network-byte-order. It may
+  // either be an IPv4 or IPv6 address.
+  // Reference https://github.com/grpc/grpc/blob/master/src/proto/grpc/lb/v1/load_balancer.proto
+  bytes srcip = 5;
+  bytes dstip = 6;
+
+  // IP protocol
+  int32 ipproto = 7;
+
+  // Port number
+  int32 sport = 8;
+  int32 dport = 9;
+
+  string device_sn = 10;
+  string logmessage = 11;
+  string note = 12;
+
+  string username = 13;
+
+  string srciface = 14;
+  string dstiface = 15;
+
+  string proto_name = 16;
+  bytes devmac = 17;
+
+  uint32 count = 18;
+
+  TrafficLog traffic_log = 19;
+  IDPLog idp_log = 20;
+  FirewallLog firewall_log = 21;
+
+  GEOIPLog geo_src = 22;
+  GEOIPLog geo_dst = 23;
+}

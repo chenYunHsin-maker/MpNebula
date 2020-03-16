@@ -1,0 +1,13 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message ListPathReport {
+  string task_id = 1;
+  bool success = 2;
+  string result = 3;
+  string device_sn = 4;
+  google.protobuf.Timestamp timestamp = 5;
+}
