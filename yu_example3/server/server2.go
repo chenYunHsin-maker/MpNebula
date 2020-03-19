@@ -45,7 +45,7 @@ func init() {
 	flag.StringVar(&cert, "cert", ws+"/certs/mycerts/old/server.pem", "The TLS cert file")
 	flag.StringVar(&key, "key", ws+"/certs/mycerts/old/server-key.pem", "The TLS key file")
 	flag.StringVar(&ca, "ca", ws+"/certs/mycerts/old/ca.pem", "The CA cert file")
-	flag.IntVar(&port, "port", 9999, "The server port")
+	flag.IntVar(&port, "port", 10000, "The server port")
 	flag.StringVar(&metricLog, "metric", "../grpc/testdata/metrics.log", "Metric log file")
 	flag.StringVar(&eventLog, "event", "../grpc/testdata/events.log", "Event log file")
 	flag.StringVar(&alertLog, "alert", "../grpc/testdata/alerts.log", "Alert log file")
@@ -95,3 +95,4 @@ func main() {
 	//grpc.PingDone()
 
 }
+
