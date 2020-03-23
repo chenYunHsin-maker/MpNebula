@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+
+	//"fmt"
 	"os"
 	"os/signal"
 	"runtime"
@@ -40,7 +42,7 @@ func init() {
 	ws, _ := os.Getwd()
 	//ws = os.Getenv("GOPATH") + "/src/sdn.io/sdwan"
 
-	fmt.Println("hi")
+	//fmt.Println("hi")
 
 	flag.StringVar(&cert, "cert", ws+"/certs/mycerts/old/server.pem", "The TLS cert file")
 	flag.StringVar(&key, "key", ws+"/certs/mycerts/old/server-key.pem", "The TLS key file")
@@ -83,16 +85,15 @@ func dumpStacks() {
 }
 
 func main() {
-	fmt.Println("hihi")
+	fmt.Println("mp2")
 	flag.Parse()
 	showversion()
 
-	setupSigusr1forDumpStack()
-	setupSignalHandler()
+	//setupSigusr1forDumpStack()
+	//setupSignalHandler()
 
 	grpc.StartServer(cert, key, ca, port, metricLog, eventLog)
 	//var s *cubsEventReportServer
 	//grpc.PingDone()
 
 }
-
