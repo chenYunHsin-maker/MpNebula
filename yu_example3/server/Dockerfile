@@ -10,3 +10,4 @@ WORKDIR /usr/local/bin/mpServer
 COPY  .  /usr/local/bin/mpServer
 
 ENTRYPOINT ["/usr/local/bin/mpServer/server2"]
+

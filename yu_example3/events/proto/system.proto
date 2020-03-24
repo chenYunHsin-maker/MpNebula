@@ -1,0 +1,70 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message FirmwareDownloaded {
+  bool success = 1;
+  string task_id = 2;
+  uint32 error_code = 3;
+  string reply_message = 4;
+  string device_sn = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}
+
+message FirmwareDownloadProcess {
+  string task_id = 1;
+  uint64 start_at = 2;
+  uint32 downloaded_size = 3;
+  uint32 expected_size = 4;
+  string device_sn = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}
+
+message FirmwareUpgradeStarted {
+  string task_id = 1;
+  string version = 2;
+  string model = 3;
+  string checksum = 4;
+  string reply_message = 5;
+  string device_sn = 6;
+  google.protobuf.Timestamp timestamp = 7;
+}
+
+message SystemAlertMessage {
+  string device_sn = 1;
+  google.protobuf.Timestamp timestamp = 2;
+
+  string alert_category = 3;
+  string alert_severity = 4;
+  string alert_message = 5;
+}
+
+message PackageUpgradeStartMessage {
+  string device_sn = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  string package_name = 3;
+  string task_id = 4;
+  bool success = 5;
+  uint32 reply_code = 6;
+  string reply_message = 7;
+}
+
+message PackageUpgradeResultMessage {
+  string device_sn = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  string package_name = 3;
+  bool success = 4;
+  uint32 reply_code = 5;
+  string reply_message = 6;
+  string version = 7;
+}
+
+message DiskLogUploadMessage {  
+  string device_sn = 1;  
+  google.protobuf.Timestamp timestamp = 2;  
+  repeated string file_name = 3;  
+  string task_id = 4;  
+  bool upload_done = 5;  
+}

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package metrics;
+
+// Empty is the response to any ReportXXX rpc.
+message Empty {
+}

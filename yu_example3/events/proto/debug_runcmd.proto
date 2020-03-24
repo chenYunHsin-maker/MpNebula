@@ -1,0 +1,15 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message DebugCommand {
+  string command = 1;
+  string device_sn = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string task_id = 4;
+  int32 return_code = 5;
+  string stdout = 6;
+  string stderr = 7;
+}

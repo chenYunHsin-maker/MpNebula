@@ -81,7 +81,7 @@ func dumpStacks() {
 }
 
 func main() {
-	fmt.Println("mp1")
+	fmt.Println("mp1,0359 0917version")
 	//fmt.Println("hihi")
 	flag.Parse()
 	showversion()

@@ -1,0 +1,44 @@
+// this file provides the data format in the edge traffic live monitoring.
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package metrics;
+
+message LiveReport {
+  repeated InterfaceStat interfaces = 1;
+  string device_sn = 2;
+  google.protobuf.Timestamp timestamp = 3;
+}
+
+message InterfaceStat {
+  // @inject_tag: label:"name=?"
+  string name = 1;
+  InterfaceMetrics metrics = 2;
+  // @inject_tag: label:"protocol=icmp"
+  L4ProtocolMetrics icmp_metrics = 3;
+  // @inject_tag: label:"protocol=tcp"
+  L4ProtocolMetrics tcp_metrics = 4;
+  // @inject_tag: label:"protocol=udp"
+  L4ProtocolMetrics udp_metrics = 5;
+  // @inject_tag: label:"protocol=other"
+  L4ProtocolMetrics other_metrics = 6;
+}
+
+message InterfaceMetrics {
+  // @inject_tag: labelnames:"name" help:"Jitter in milliseconds for traffic on a interface"
+  uint64 jitter_milliseconds = 1;
+  // @inject_tag: help:"Total packet loss for an interface"
+  uint64 packet_lost = 2;
+}
+
+message L4ProtocolMetrics {
+  // @inject_tag: labelnames:"name,protocol" help:"Accumulated ingress octets for a specific transport protocol"
+  uint64 in_octets = 1;
+  // @inject_tag: help:"Accumulated ingress packets for a specific transport protocol"
+  uint64 in_packets = 2;
+  // @inject_tag: help:"Accumulated egress octets for a specific transport protocol"
+  uint64 out_octets = 3;
+  // @inject_tag: help:"Accumulated egress packets for a specific transport protocol"
+  uint64 out_packets = 4;
+}

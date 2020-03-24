@@ -1,0 +1,14 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message DNSReport {
+  bool success = 1;
+  string task_id = 2;
+  string answer = 3;
+  string msg = 4;
+  string device_sn = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}

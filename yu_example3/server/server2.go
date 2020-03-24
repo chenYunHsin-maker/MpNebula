@@ -85,14 +85,14 @@ func dumpStacks() {
 }
 
 func main() {
-	fmt.Println("mp2")
+	fmt.Println("mp2,0359 0308version")
 	flag.Parse()
 	showversion()
 
 	//setupSigusr1forDumpStack()
 	//setupSignalHandler()
 
-	grpc.StartServer(cert, key, ca, port, metricLog, eventLog)
+	grpc.StartServer2(cert, key, ca, port, metricLog, eventLog)
 	//var s *cubsEventReportServer
 	//grpc.PingDone()
 

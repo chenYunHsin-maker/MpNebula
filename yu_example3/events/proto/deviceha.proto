@@ -1,0 +1,12 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message DeviceHAStatus {
+  string device_ha_status = 1;
+  string fail_over_cause = 2;
+  string device_sn = 3; 
+  google.protobuf.Timestamp timestamp = 4;
+}

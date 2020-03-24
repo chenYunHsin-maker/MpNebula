@@ -1,0 +1,14 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message TracerouteReport {
+  string task_id = 1;
+  string destination = 2;
+  string interface = 3;
+  string report = 4;
+  string device_sn = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}

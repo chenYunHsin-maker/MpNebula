@@ -1,0 +1,20 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message DnsAnswerEntry {
+  string name = 1;
+  string type = 2;
+  string cls = 3;
+  bytes addr = 4;
+  string fqdn = 5;
+  uint32 ttl = 6;
+};
+
+message DnsAnswer {
+  string device_sn = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  repeated DnsAnswerEntry entry = 3;
+};

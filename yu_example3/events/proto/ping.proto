@@ -1,0 +1,12 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package events;
+
+message PingReport {
+  string device_sn = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  string task_id = 3;
+  string report = 4;
+}
